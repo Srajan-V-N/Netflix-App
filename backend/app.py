@@ -18,13 +18,13 @@ def create_app() -> Flask:
     app.register_blueprint(health_bp)
     app.register_blueprint(auth_bp)
 
+    init_db()
+
     return app
 
 
 if __name__ == "__main__":
     print("[App] Creating Flask app…")
     app = create_app()
-    print("[App] Connecting to database and initialising schema…")
-    init_db()
     print("[App] Ready — starting Flask on http://0.0.0.0:5000")
     app.run(debug=True, host="0.0.0.0", port=5000)
