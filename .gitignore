@@ -1,0 +1,45 @@
+# ─── Python ──────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+.venv/
+env/
+.env
+!backend/.env.example
+!frontend/.env.example
+
+# ─── Node / Frontend ─────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.env
+!frontend/.env.example
+*.local
+
+# ─── Logs ────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── OS ──────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editor ──────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+Prompt.md
+Temp.md
+
+.claude
