@@ -50,6 +50,19 @@ export function Navbar() {
           NETFLIX
         </motion.a>
 
+        {/* Nav links */}
+        <nav className="hidden md:flex items-center gap-6 ml-8">
+          {["Home", "TV Shows", "Movies", "New & Popular", "My List", "Browse by Languages"].map((link) => (
+            <a
+              key={link}
+              href="/"
+              className="text-sm text-white/70 hover:text-white transition-colors whitespace-nowrap"
+            >
+              {link}
+            </a>
+          ))}
+        </nav>
+
         {/* Right actions */}
         <div className="flex items-center gap-4">
           <motion.button
@@ -77,14 +90,14 @@ export function Navbar() {
                 onClick={() => setDropdownOpen((v) => !v)}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                className="flex items-center gap-2 glass-panel rounded-full px-3 py-1.5"
+                className="flex items-center gap-2 glass-panel rounded-lg px-3 py-1.5"
                 aria-label="Profile menu"
                 aria-expanded={dropdownOpen}
               >
                 <img
                   src="/avatar.jpg"
                   alt="Profile"
-                  className="w-7 h-7 rounded-full object-cover ring-1 ring-white/20"
+                  className="w-7 h-7 object-cover ring-1 ring-white/20" style={{ borderRadius: '6px' }}
                 />
                 <span className="hidden text-xs text-white/80 sm:block">
                   {user.name.split(" ")[0]}

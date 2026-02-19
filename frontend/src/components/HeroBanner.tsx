@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Info } from "lucide-react";
-import { getImageUrl } from "@/api/tmdb";
+import { getImageUrl } from "@/services/tmdb";
 import { RippleButton } from "./RippleButton";
 import type { Movie } from "@/types/movie";
 
@@ -16,7 +16,7 @@ const contentVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export function HeroBanner({ movies }: Props) {

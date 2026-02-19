@@ -67,7 +67,7 @@ export default function Login() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <LiquidGlassCard>
+          <LiquidGlassCard variant="auth">
             <div className="p-8 md:p-10">
               <motion.div variants={staggerContainer} initial="initial" animate="animate">
 

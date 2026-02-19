@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MovieCard } from "./MovieCard";
@@ -9,7 +9,7 @@ interface Props {
   movies: Movie[];
 }
 
-export function MovieRow({ title, movies }: Props) {
+export const MovieRow = memo(function MovieRow({ title, movies }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   function scroll(direction: "left" | "right") {
@@ -24,7 +24,7 @@ export function MovieRow({ title, movies }: Props) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
       <h2 className="mb-3 text-lg font-semibold text-white md:text-xl">{title}</h2>
 
@@ -58,4 +58,4 @@ export function MovieRow({ title, movies }: Props) {
       </div>
     </motion.div>
   );
-}
+});

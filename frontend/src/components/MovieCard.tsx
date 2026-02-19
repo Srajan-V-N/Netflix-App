@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Star, Play, Info } from "lucide-react";
-import { getImageUrl } from "@/api/tmdb";
+import { memo } from "react";
+import { getImageUrl } from "@/services/tmdb";
 import type { Movie } from "@/types/movie";
 
 interface Props {
@@ -38,7 +39,7 @@ const ratingVariants = {
   hover: { opacity: 1, y: 0, transition: { duration: 0.25, delay: 0.12 } },
 };
 
-export function MovieCard({ movie }: Props) {
+export const MovieCard = memo(function MovieCard({ movie }: Props) {
   const title = movie.title ?? movie.name ?? "Untitled";
   const imageUrl = getImageUrl(movie.poster_path, "w342");
   const rating = movie.vote_average.toFixed(1);
@@ -109,4 +110,4 @@ export function MovieCard({ movie }: Props) {
       </motion.div>
     </motion.div>
   );
-}
+});

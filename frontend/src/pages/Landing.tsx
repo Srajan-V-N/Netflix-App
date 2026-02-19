@@ -1,9 +1,11 @@
+import { lazy, Suspense } from "react";
 import { useTMDB } from "@/hooks/useTMDB";
-import { HeroBanner } from "@/components/HeroBanner";
-import { MovieRow } from "@/components/MovieRow";
 import { SkeletonRow } from "@/components/SkeletonRow";
 import { Navbar } from "@/components/Navbar";
 import { PageTransition } from "@/components/PageTransition";
+
+const HeroBanner = lazy(() => import("@/components/HeroBanner").then(m => ({ default: m.HeroBanner })));
+const MovieRow   = lazy(() => import("@/components/MovieRow").then(m => ({ default: m.MovieRow })));
 
 export default function Landing() {
   const { rows, heroes, isLoading, error } = useTMDB();
@@ -18,11 +20,13 @@ export default function Landing() {
         {isLoading ? (
           <div className="h-[85vh] min-h-[500px] skeleton-shimmer" />
         ) : heroes.length > 0 ? (
-          <HeroBanner movies={heroes} />
+          <Suspense fallback={<div className="h-[85vh] min-h-[500px] skeleton-shimmer" />}>
+            <HeroBanner movies={heroes} />
+          </Suspense>
         ) : null}
 
         {/* Movie Rows */}
-        <div className="relative z-10 -mt-16 pb-16">
+        <div className="relative z-10 mt-8 pb-16">
           {isLoading ? (
             Array.from({ length: 5 }).map((_, i) => <SkeletonRow key={i} />)
           ) : error ? (
@@ -30,9 +34,11 @@ export default function Landing() {
               <p className="text-red-400 text-sm">{error}</p>
             </div>
           ) : (
-            rows.map((row) => (
-              <MovieRow key={row.title} title={row.title} movies={row.movies} />
-            ))
+            <Suspense fallback={Array.from({ length: 5 }).map((_, i) => <SkeletonRow key={i} />)}>
+              {rows.map((row) => (
+                <MovieRow key={row.title} title={row.title} movies={row.movies} />
+              ))}
+            </Suspense>
           )}
         </div>
       </div>

@@ -5,7 +5,7 @@ import {
   fetchTopRated,
   fetchActionMovies,
   fetchDramaMovies,
-} from "@/api/tmdb";
+} from "@/services/tmdb";
 import type { Movie, MovieRow } from "@/types/movie";
 
 interface TMDBState {

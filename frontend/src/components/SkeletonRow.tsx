@@ -1,4 +1,6 @@
-export function SkeletonRow() {
+import { memo } from "react";
+
+export const SkeletonRow = memo(function SkeletonRow() {
   return (
     <div className="mb-8 px-4 md:px-12">
       {/* Row title skeleton */}
@@ -16,4 +18,4 @@ export function SkeletonRow() {
       </div>
     </div>
   );
-}
+});
