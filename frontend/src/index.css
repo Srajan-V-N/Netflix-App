@@ -157,14 +157,35 @@ body {
     0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
-/* ─── Auth card: black liquid glass ─────────────────────────────── */
-.glassy-card-auth {
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 25px 80px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.04);
+/* ─── Auth card + Navbar: Apple-style black liquid glass ─────────── */
+.black-liquid-glass {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 18, 18, 0.65),
+    rgba(10, 10, 10, 0.55)
+  );
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.65),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   border-radius: 20px;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Apple-like top-lit internal depth */
+.black-liquid-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04), transparent 60%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ─── Auth page cinematic backgrounds ───────────────────────────── */

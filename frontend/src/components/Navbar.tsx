@@ -34,8 +34,8 @@ export function Navbar() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
       {/* Glass background that fades in on scroll */}
       <motion.div
-        className="glass-nav absolute inset-0"
-        style={{ opacity: bgOpacity }}
+        className="black-liquid-glass absolute inset-0"
+        style={{ opacity: bgOpacity, borderRadius: 0 }}
       />
 
       <div className="relative flex items-center justify-between px-4 py-4 md:px-12">

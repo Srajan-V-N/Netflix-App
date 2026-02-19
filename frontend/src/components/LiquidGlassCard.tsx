@@ -10,7 +10,7 @@ interface Props {
 export function LiquidGlassCard({ children, className, variant }: Props) {
   if (variant === "auth") {
     return (
-      <div className={cn("glassy-card-auth", className)}>
+      <div className={cn("black-liquid-glass", className)}>
         {children}
       </div>
     );
