@@ -1,16 +1,12 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence, useTransform, useScroll } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Bell, Search, ChevronDown, Settings, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 export function Navbar() {
   const { user, logout } = useAuth();
-  const { scrollY } = useScroll();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Background opacity: transparent at top, glass nav when scrolled
-  const bgOpacity = useTransform(scrollY, [0, 80], [0, 1]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -32,10 +28,10 @@ export function Navbar() {
     >
       {/* Permanent top gradient — always visible regardless of scroll */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
-      {/* Glass background that fades in on scroll */}
+      {/* Glass background — always visible */}
       <motion.div
         className="black-liquid-glass absolute inset-0"
-        style={{ opacity: bgOpacity, borderRadius: 0 }}
+        style={{ borderRadius: 0 }}
       />
 
       <div className="relative flex items-center justify-between px-4 py-4 md:px-12">
